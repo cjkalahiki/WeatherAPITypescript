@@ -10,7 +10,8 @@ type State = {
     longitude: number,
     temperatureCel: number,
     temperatureFah: number, 
-    description: string
+    description: string,
+    place: string
 }
 
 export default class Display extends Component<Props, State> {
@@ -21,7 +22,8 @@ export default class Display extends Component<Props, State> {
             longitude: NaN,
             temperatureCel: 0,
             temperatureFah: 0,
-            description: ''
+            description: '',
+            place: ''
         }
     }
 
@@ -63,7 +65,8 @@ export default class Display extends Component<Props, State> {
                 this.setState({
                     temperatureCel: Math.floor(json.main.temp - 273.15),
                     temperatureFah: Math.floor((json.main.temp - 273.15)*(9/5)+32),
-                    description: json.weather[0].description
+                    description: json.weather[0].description,
+                    place: json.name
                 })
             })
         }
@@ -72,7 +75,10 @@ export default class Display extends Component<Props, State> {
     render() {
         return (
             <div>
-                <DisplayWeather temperatureCel={this.state.temperatureCel} temperatureFah={this.state.temperatureFah} description={this.state.description}/>
+                <br/>
+                <br/>
+                <h1>Your Local Weather</h1>
+                <DisplayWeather temperatureCel={this.state.temperatureCel} temperatureFah={this.state.temperatureFah} description={this.state.description} place={this.state.place}/>
             </div>
         )
     }
