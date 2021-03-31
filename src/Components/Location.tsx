@@ -27,7 +27,7 @@ export default class Display extends Component<Props, State> {
         }
     }
 
-    successfulCoord = (obj: any) => {
+    successfulCoord = (obj: GeolocationPosition) => {
         this.setState({
             latitude: Math.round(obj.coords.latitude),
             longitude: Math.round(obj.coords.longitude)
@@ -44,7 +44,7 @@ export default class Display extends Component<Props, State> {
         }
     }
 
-    componentDidUpdate = ({}, prevState: State) => {
+    componentDidUpdate = (prevProps: [], prevState: State) => {
         if (prevState.latitude !== this.state.latitude && prevState.longitude !== this.state.longitude){
             this.fetchWeather();
         }

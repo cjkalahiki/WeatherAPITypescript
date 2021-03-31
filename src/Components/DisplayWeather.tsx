@@ -1,7 +1,14 @@
 import React from 'react';
 import {Card, CardText, CardBody, CardTitle, CardSubtitle, Button} from 'reactstrap';
 
-const DisplayWeather = (props) => {
+type WeatherProps = {
+    description: string,
+    temperatureCel: number,
+    temperatureFah: number,
+    place: string
+}
+
+const DisplayWeather: React.FC<WeatherProps> = (props) => {
     return (
         <Card style={{margin: '3em'}}>
             <CardBody>
